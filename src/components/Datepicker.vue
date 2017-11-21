@@ -1,14 +1,16 @@
 <template>
   <div>
-    <flat-pickr v-model="date" style="background-color: white;" placeholder="Prüfungsdatum" input-class="form-control custom-input-class" :config="config">
+    <flat-pickr style="background-color: white;" placeholder="Prüfungsdatum" input-class="form-control custom-input-class" :config="config">
     </flat-pickr>
     <div class="input-group-btn">
-      <button class="btn btn-default" type="button" title="Toggle" data-toggle>
-        <i class="fa fa-calendar">
+      <!--button class="btn btn-default" type="button" title="Toggle" data-toggle>
+        <i>class="fa fa-calendar">
           <span aria-hidden="true" class="sr-only">Toggle</span>
         </i>
-      </button>
+      </button-->
+      <p>{{ date }}</p>
     </div>
+    
   </div>
 </template>
 
@@ -19,6 +21,8 @@
   import {Russian} from 'flatpickr/dist/l10n/ru.js'
   import {German} from 'flatpickr/dist/l10n/de.js'
   flatpickr.localize(German)
+
+  import collector from './collector.vue'
   
   const configFlatPickr = {
     dateFormat: 'd-m-Y'
@@ -26,11 +30,13 @@
   
   export default {
     components: {
-      flatPickr
+      flatPickr,
+      collector
     },
     data () {
       return {
         date: new Date(),
+        date: '',
   
         config: {
           wrap: true, // set wrap to true when using 'input-group'
@@ -40,7 +46,8 @@
   
         }
       }
-    }
-  
+    },
   }
 </script>
+
+

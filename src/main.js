@@ -16,7 +16,13 @@ new Vue({
   data () {
     return {
       msg: '',
-      date: new Date()
+      date: new Date(),
+      protokoll: {
+        date: '',
+        pruefer: '',
+        beisitzer: '',
+        
+      }
     }
   }
 })
