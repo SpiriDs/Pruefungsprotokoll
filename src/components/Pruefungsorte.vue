@@ -1,24 +1,22 @@
+/* eslint-disable */
 <template>
   <div>
     <v-select v-model="pruefungsort" label="name" :options="standorte"></v-select>
   </div>
 </template>
-
+/* eslint-disable */
 <script>
 import vSelect from 'vue-select'
 
-
 export default {
   components: {
-    vSelect,
-    
+    vSelect
   },
-
+  props: ['protokoll'],
   data () {
     return {
       standorte: [],
-      pruefungsort: '',
-      
+      pruefungsort: ''
     }
   },
 

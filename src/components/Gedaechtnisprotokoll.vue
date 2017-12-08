@@ -7,31 +7,44 @@
         <div class="from-group col-md-4 mb-3">
           <label class="control-label requiredField" for="datum">Prüfungsdatum</label>
           <span class="asteriskField">*</span>
-          <Datepicker v-model="date"></Datepicker>
+          <Datepicker v-bind:protokoll="protokoll" v-model="protokoll.date"></Datepicker>
           
         </div>
 <!-- Prüfer -->
         <div class="form-group col-md-4 mb-3">
           <label class="control-label " for="pruefer">Prüfer</label>
-          <input class="form-control" id="pruefer" name="pruefer" data-vv-as="Prüfer" type="text"   placeholder="Prüfer" v-bind="pruefer" v-model="pruefer"/>
+          <input class="form-control" id="pruefer" name="pruefer" data-vv-as="Prüfer" type="text"   placeholder="Prüfer" v-model="protokoll.pruefer"/>
         </div>
       </div>
 <!-- Beisitzer -->
       <div class="row">
         <div class="form-group col-md-4 mb-3 ">
           <label class="control-label " for="beisitzer">Beisitzer</label>
-          <input class="form-control" id="beisitzer" name="beisitzer" placeholder="Beisitzer" type="text"       v-bind="beisitzer" v-model="beisitzer"/>
+          <input class="form-control" id="beisitzer" name="beisitzer" placeholder="Beisitzer" type="text" v-model="protokoll.beisitzer"/>
         </div>
 <!-- Prüfungsort -->
         <div class="form-group col-md-4 mb-3 ">
           <label class="control-label requiredField" for="prüfungsort">Prüfungsort</label>
           <span class="asteriskField">*</span>
-          <Pruefungsorte v-model="pruefungsort"></Pruefungsorte>
+          <Pruefungsorte v-bind:protokoll="protokoll" v-model="protokoll.pruefungsort"></Pruefungsorte>
         </div>
       </div>
-    </div> 
-    
-    
+<!-- Prüfungsfragen -->
+      <div class="row">
+        <div class="form-group col-md-4 mb-3" >
+          <label class="control-label requiredField" for="pruefungsfragen">Prüfungsfragen</label>
+          <span class="asteriskField">*</span>
+          <textarea class="form-control" cols="40" id="pruefungsfragen" name="pruefungsfragen" placeholder="Prüfungsfragen" rows="10" v-model="protokoll.pruefungsfragen"></textarea>
+        </div>
+<!-- Persönliche Eindrücke -->
+        <div class="form-group col-md-4 mb-3">
+          <label class="control-label requiredField" for="persoenlicheEindruecke">Persönliche Eindrücke</label>
+          <span class="asteriskField">*</span>
+          <textarea class="form-control" id="persoenlicheEindruecke" name="persoenlicheEindruecke"  cols="40"  placeholder="Persönliche Eindrücke" rows="10" v-model="protokoll.persoenlicheEindruecke"></textarea>
+        </div>
+      </div>
+      <p>{{protokoll.pruefer}}</p> 
+    </div>    
   </div>
 </template>
 
@@ -47,15 +60,37 @@
       Pruefungsorte,
       collector
     },
+    computed: {
+      pruefer: {
+        get() {
+          return this.$store.state.pruefer
+        },
+        set(value) {
+          this.$store.commit('updatePruefer', value)
+        }
+        
+      },
+      beisitzer: () => {
+        return this.$store.getters.beisitzer
+      },
+      pruefungsfragen: () => {
+        return this.$store.getters.pruefungsfragen
+      },
+      persoenlicheEindruecke: () => {
+        return this.$store.getters.persoenlicheEindruecke
+      }
+    },
     data () {
       return {
-        msg: 'Welcome to Yoursdsddd Vue.js App',
         
+        protokoll:{
           pruefer: '',
           beisitzer: '',
-          date: '',
-          pruefungsort: ''
-        
+          datum: '',
+          pruefungsort: '',
+          pruefungsfragen: '',
+          persoenlicheEindruecke: '',
+        }
       }
     },
     

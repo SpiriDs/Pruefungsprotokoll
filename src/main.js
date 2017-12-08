@@ -3,13 +3,15 @@
 import Vue from 'vue'
 import App from './App'
 import VueResource from 'vue-resource'
-Vue.use(VueResource);
+import store from './store'
+Vue.use(VueResource)
 
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
+/* eslint-disable */
 new Vue({
   el: '#app',
+  store,
   template: '<App/>',
   components: { App },
 
@@ -20,8 +22,7 @@ new Vue({
       protokoll: {
         date: '',
         pruefer: '',
-        beisitzer: '',
-        
+        beisitzer: ''
       }
     }
   }

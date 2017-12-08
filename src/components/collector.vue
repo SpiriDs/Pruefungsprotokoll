@@ -1,17 +1,13 @@
 <template>
   <div>
-    
-<input type="text" id="pruefer" v-model="pruefer">
-<input type="text" id="date" v-model="date">
-
-   
+    <input type="text" id="pruefer" v-model="pruefer">
+    <input type="text" id="date" v-model="date">
   </div>
 </template>
 
 <script>
 
-
-
+/* eslint-disable */
 export default {
     props: {
         pruefer: {
@@ -36,7 +32,7 @@ export default {
       
       
     }
-  },
+  }
  
 }
 </script>
