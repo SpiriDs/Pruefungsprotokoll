@@ -12,4 +12,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 /nbproject/private/
-/node-modules/
+
+# dependencies
+/node_modules
